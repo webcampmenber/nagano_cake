@@ -34,62 +34,65 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
 
 
       t.timestamps null: false
+      
+      t.string   :last_name
+      t.string   :first_name
+      t.string   :last_name_kana
+      t.string   :first_name_kana
+      t.string   :postal_code
+      t.string   :address
+      t.string   :telephone_number
+      t.boolean  :is_deleted
     end
     
     create_table :addresses do |t|
-      t.integer :customer_id
-      t.string :name
-      t.string :postal_code
-      t.string :address
-      t.datetime :created_at
-      t.datetime :updated_at
+      t.integer  :customer_id
+      t.string   :name
+      t.string   :postal_code
+      t.string   :address
     end
     
     create_table :items do |t|
-      t.integer :genre_id
-      t.string :name
-      t.text :introduction
-      t.integer :price
-      t.boolean :is_active
-      t.datetime :created_at
-      t.datetime :updated_at
+      t.integer  :genre_id
+      t.string   :name
+      t.text     :introduction
+      t.integer  :price
+      t.boolean  :is_active
     end
     
     create_table :genres do |t|
-      t.string :name
-      t.datetime :created_at
-      t.datetime :updated_at
+      t.string   :name
     end
     
     create_table :cart_items do |t|
-     t.integer :item_id
-     t.integer :customer_id
-     t.integer :amount
-     t.datetime :created_at
-     t.datetime :updated_at
+     t.integer  :item_id
+     t.integer  :customer_id
+     t.integer  :amount
+     
+     
     end
     
     create_table :orders do |t|
-     t.integer :customer_id
-     t.string :postal_code
-     t.string :address
-     t.string :name
-     t.integer :shipping_cost
-     t.integer :total_payment
-     t.integer :payment_method
-     t.integer :status
-     t.datetime :created_at
-     t.datetime :updated_at
+     t.integer  :customer_id
+     t.string   :postal_code
+     t.string   :address
+     t.string   :name
+     t.integer  :shipping_cost
+     t.integer  :total_payment
+     t.integer  :payment_method
+     t.integer  :status
+     
+     
     end
     
     create_table :order_details do |t|
-      t.integer :customer_id
-      t.integer :items_id
-      t.integer :quanitity
-      t.integer :price
-      t.integer :production_status
-      t.datetime :created_at
-      t.datetime :updated_at
+      t.integer  :customer_id
+      t.integer  :items_id
+      t.integer  :quanitity
+      t.integer  :price
+      t.integer  :production_status
+      
+      
     end
     
     add_index :customers, :email,                unique: true

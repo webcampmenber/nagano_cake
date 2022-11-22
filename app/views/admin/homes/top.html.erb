@@ -1,2 +1,34 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+  <header>
+     <% if admin_signed_in? %>
+      <%= link_to admin_items_path do %>
+      　商品一覧
+      <% end %>
+      <%= link_to admin_customers_path do %>
+      　会員一覧
+      <% end %>
+      <%= link_to admin_items_path do %>
+      　注文履歴一覧
+      <% end %>
+      <%= link_to admin_genres_path do %>
+      　ジャンル一覧
+      <% end %>
+      <%= link_to new_admin_session_path do %>
+      　ログアウト
+      <% end %>
+      <% else %>
+      <%= link_to about_path do %>
+      　About
+      <% end %>
+      <%= link_to admin_items_path  do %>
+      　商品一覧
+      <% end %>
+      <%= link_to new_admin_session_path do %>
+      　新規登録
+      <% end %>
+      <%= link_to new_admin_session_path do %>
+      　ログイン
+      <% end %>
+     <% end %>
+  </header>
+   
+   
