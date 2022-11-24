@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     
     resources :homes, only:[:top, :about]
     resources :items, only:[:index, :show]
-    resources :customers, only:[:show, :esit, :update]
+    resource :customers, only:[:show, :esit, :update]
     resources :cart_items, only:[:index, :create, :update]
     resources :orders, only:[:new, :create, :index, :show]
     resources :addresses, only:[:create, :index, :edit, :update, :destroy]
