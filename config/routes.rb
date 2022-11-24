@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  
   scope module: :public do
     root to: "homes#top"
-    get "about" => "homes#about", as: "about"
+    get "home/about" => "homes#about", as: "about"
     get "customers/withdrawal_confirmation" => "customers#withdrawal_confirmation", as: "withdrawal_confirmation"
     patch "customers/withdrawa_process" => "customers#withdrawa_process", as: "withdrawa_process"
     delete "cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all"
@@ -11,15 +10,10 @@ Rails.application.routes.draw do
     
     resources :homes, only:[:top, :about]
     resources :items, only:[:index, :show]
-    resource :customers, only:[:show, :esit, :update]
+    resources :customers, only:[:show, :esit, :update]
     resources :cart_items, only:[:index, :create, :update]
     resources :orders, only:[:new, :create, :index, :show]
     resources :addresses, only:[:create, :index, :edit, :update, :destroy]
-    
-    devise_for :customers, skip: [:passwords], controllers: {
-     registrations: "public/registrations",
-     sessions: 'public/sessions'
-    }
   end
   
   namespace :admin do
@@ -31,9 +25,4 @@ Rails.application.routes.draw do
     resources :orders, only:[:show, :update]
     resources :order_details, only:[:update]
   end
-  
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-  sessions: "admin/sessions"
-  }
-  
 end
