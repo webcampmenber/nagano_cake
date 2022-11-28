@@ -12,7 +12,7 @@
   <%= f.text_area :introduction %>
   
   <h3>ジャンル</h3>
-  <%= f.collection_select(:name, @genre, :id, :name) %>
+  <%= f.collection_select(:genre_id, @genre, :id, :name) %>
   
   <h3>税抜価格</h3>
   <%= f.text_area :price %>
