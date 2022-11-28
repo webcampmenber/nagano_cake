@@ -31,6 +31,9 @@
    <% end %>
  </header>
  <h1>商品一覧</h1>
+  <%= link_to new_admin_item_path  do %>
+     <i class="fas fa-plus" ></i>
+     <% end %>
   <table>
     <thead>
      <th>商品ID</th>
@@ -41,10 +44,11 @@
     </thead>
     <tboby>
      <% @items.each do |item| %>
+     <tr>
       <td><%= item.id %></td>
-      <td><% link_to item.name, admin_item_path(item.id) %></td>
+      <td><%= link_to item.name, admin_item_path(item.id) %></td>
       <td><%= item.price %></td>
-      <td><%= item.genre_id %></td>
+      <td><%= item.genre.name %></td>
       <td>
        <% if item.is_active %>
        販売中
@@ -52,7 +56,8 @@
        販売停止中
        <% end %>
        </td>
-     <% end %> 
+      </tr>
+     <% end %>
     </tboby>
   </table>
    
