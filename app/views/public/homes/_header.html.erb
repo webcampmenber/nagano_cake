@@ -1,0 +1,29 @@
+<header>
+   <% if admin_signed_in? %>
+    <%= link_to customers_path do %>
+    　マイページ
+    <% end %>
+    <%= link_to items_path do %>
+    　商品一覧
+    <% end %>
+    <%= link_to cart_items_path do %>
+    　カート
+    <% end %>
+    <%= link_to root_path do %>
+    　ログアウト
+    <% end %>
+    <% else %>
+    <%= link_to about_path do %>
+    　About
+    <% end %>
+    <%= link_to items_path  do %>
+    　商品一覧
+    <% end %>
+    <%= link_to new_customer_registration_path do %>
+    　新規登録
+    <% end %>
+    <%= link_to new_customer_session_path do %>
+    　ログイン
+    <% end %>
+   <% end %>
+ </header>
