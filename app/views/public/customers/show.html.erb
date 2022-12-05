@@ -1,4 +1,21 @@
 <%= render 'public/homes/header', header: @header %>
 
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<h3>マイページ</h3>
+<div>
+  登録情報
+  <%= link_to "編集する", edit_customers_path %>
+</div>
+<h4>氏名<%= @customer.last_name %><%= @customer.first_name %></h4>
+<h4>カナ<%= @customer.last_name_kana %><%= @customer.first_name_kana %></h4>
+<h4>郵便番号<%= @customer.postal_code %></h4>
+<h4>住所<%= @customer.address %></h4>
+<h4>電話番号<%= @customer.telephone_number %></h4>
+<h4>メールアドレス<%= @customer.email %></h4>
+<div>
+  配送先
+  <%= link_to "一覧を見る", addresses_path %>
+</div>
+<div>
+  注文履歴
+  <%= link_to "一覧を見る", orders_path %>
+</div>
