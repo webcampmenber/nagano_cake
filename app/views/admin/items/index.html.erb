@@ -1,35 +1,5 @@
- <header>
-   <% if admin_signed_in? %>
-    <%= link_to admin_items_path do %>
-    　商品一覧
-    <% end %>
-    <%= link_to admin_customers_path do %>
-    　会員一覧
-    <% end %>
-    <%= link_to admin_items_path do %>
-    　注文履歴一覧
-    <% end %>
-    <%= link_to admin_genres_path do %>
-    　ジャンル一覧
-    <% end %>
-    <%= link_to destroy_admin_session_path, method: :delete do %>
-    　ログアウト
-    <% end %>
-    <% else %>
-    <%= link_to about_path do %>
-    　About
-    <% end %>
-    <%= link_to admin_items_path  do %>
-    　商品一覧
-    <% end %>
-    <%= link_to new_admin_session_path do %>
-    　新規登録
-    <% end %>
-    <%= link_to new_admin_session_path do %>
-    　ログイン
-    <% end %>
-   <% end %>
- </header>
+ <%= render 'admin/homes/header', homes: @homes %>
+ 
  <h1>商品一覧</h1>
   <%= link_to new_admin_item_path  do %>
      <i class="fas fa-plus" ></i>
@@ -60,4 +30,5 @@
      <% end %>
     </tboby>
   </table>
+  <%= paginate @items %>
    
