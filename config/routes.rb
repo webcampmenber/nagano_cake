@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "about" => "homes#about", as: "about"
     get "customers/withdrawal_confirmation" => "customers#withdrawal_confirmation", as: "withdrawal_confirmation"
-    patch "customers/withdrawa_process" => "customers#withdrawa_process", as: "withdrawa_process"
+    patch "customers/withdrawal_process" => "customers#withdrawal_process", as: "withdrawal_process"
     delete "cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all"
     get "orders/thanks" => "orders#thanks", as: "thanks"
     post "orders/confirmation" => "orders#confirmation", as: "confirmation"
