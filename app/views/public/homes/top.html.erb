@@ -11,9 +11,11 @@
  <div>
    <h2>新着商品</h2>
    <% @items.each do |item| %>
+    <%= link_to  item_path(item.id) do %>
     <%= image_tag item.get_image(100,100) %>
     <%= item.name %>
     <%= item.price %>
+    <% end %>
    <% end %>
  </div>
  <%= link_to "全ての商品一覧を見る>",items_path %>

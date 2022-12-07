@@ -1,3 +1,5 @@
+<%= render 'public/homes/header', header: @header %>
+
 <h3>配送先登録/一覧</h3>
 <%= form_with model: @address, url: address_path(@address.id), method: :patch do |f| %> 
 
