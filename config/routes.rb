@@ -9,10 +9,13 @@ Rails.application.routes.draw do
     get "orders/thanks" => "orders#thanks", as: "thanks"
     post "orders/confirmation" => "orders#confirmation", as: "confirmation"
     
+    
     resources :homes, only:[:top, :about]
     resources :items, only:[:index, :show]
     resource :customers, only:[:show, :edit, :update]
-    resources :cart_items, only:[:index, :create, :update]
+    resources :cart_items, only:[:index, :create, :update, :destroy] do 
+    delete 'cart_items/destroy_all'
+    end
     resources :orders, only:[:new, :create, :index, :show]
     resources :addresses, only:[:create, :index, :edit, :update, :destroy]
   end

@@ -1,6 +1,8 @@
 <%= render 'public/homes/header', header: @header %>
 
 <h3>ショッピングカート</h3>
+<h3><%= link_to "カートを空にする", cart_item_cart_items_destroy_all_path(@cart_items), method: :delete %></h3>
+
 <table>
   <thead>
    <tr>
@@ -12,14 +14,25 @@
    </tr>
   </thead>
   <tboby>
-      <% @cart_item.each do |cart_item| %>
+      <% @cart_items.each do |cart_item| %>
        <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= cart_item.item.name %></td>
+        <td><%= cart_item.item.with_tax_price %></td>
+        <td><%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
+            <%= f.select :amount, *[1..5] %>
+            <%= f.submit '変更' %>
+            <% end %>
+        </td>
+        <td>
+            <%= cart_item.subtotal %>
+            <% @total_amount +=  cart_item.subtotal %>
+        </td>
+        <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete %></td>
        </tr>
       <% end %>
    </tboby>
 </table>
+
+<%= @total_amount %>
+<%= link_to "買い物を続ける", root_path %>
+<%= link_to "情報入力に進む", new_order_path %>
