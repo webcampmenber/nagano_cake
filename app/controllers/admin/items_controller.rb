@@ -13,7 +13,8 @@ class Admin::ItemsController < ApplicationController
     if @item.save
     redirect_to admin_item_path(@item.id)
     else
-     render :new_admin_item_path
+     @genre = Genre.all
+     render :new
     end
   end
 

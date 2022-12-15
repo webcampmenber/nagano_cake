@@ -9,13 +9,21 @@
      <th>注文ステータス</th>
     </thead>
     <tboby>
-     <% @customer.each do |customer| %>
-     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      </tr>
+     <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to admin_order_path(order.id) do %>
+            <%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+            <% end %>
+        </td>
+        <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+        <td><% total = 0 %>
+            <% order.order_details.each do |order_detail| %>
+            <% total += order_detail.quantity %> 
+            <% end %>
+            <%= total %>
+        </td>
+        <td><%= order.status_i18n %></td>
+       </tr>
      <% end %>
     </tboby>
   </table>

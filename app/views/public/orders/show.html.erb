@@ -1,2 +1,67 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<%= render 'public/homes/header', header: @header %>
+
+<h3>注文履歴詳細</h3>
+
+<h5>注文詳細</h5>
+  <table>
+    <thead>
+     <tr>
+      <th>注文日</th>
+      <th>配送先</th>
+      <th>支払い方法</th>
+      <th>ステータス</th>
+     </tr>
+    </thead>
+    <tboby>
+         <tr>
+          <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+          <td>〒<%= @order.postal_code %></br>
+              <%= @order.address %></br>
+              <%= @order.name %>
+          </td>
+          <td><%= @order.payment_method_i18n %></td>
+          <td><%= @order.status_i18n %></td>
+         </tr>
+    </tboby>
+  </table>
+
+<h5>請求情報</h5>
+  <table>
+    <thead>
+     <tr>
+      <th>商品合計</th>
+      <th>配送料</th>
+      <th>ご請求額</th>
+     </tr>
+    </thead>
+    <tboby>
+         <tr>
+          <td><%= @order.order_details.sum(&:subtotal) %></td>
+          <td><%= @order.shipping_cost %></td>
+          <td><%= @order.total_payment %></td>
+         </tr>
+    </tboby>
+  </table>
+
+<h5>注文内容</h5>
+  <table>
+    <thead>
+     <tr>
+      <th>商品</th>
+      <th>単価（税込）</th>
+      <th>個数</th>
+      <th>小計</th>
+     </tr>
+    </thead>
+    <tboby>
+        <% @order.order_details.includes(:item).each do |order| %>
+        <% item = order.item %> 
+         <tr>
+          <td><%= item.name %></td>
+          <td><%= order.tax_inclued %></td>
+          <td><%= order.quantity %></td>
+          <td><%= order.subtotal %></td>
+         </tr>
+        <% end %>
+    </tboby>
+  </table>
