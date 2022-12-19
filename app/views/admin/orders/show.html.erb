@@ -1,11 +1,12 @@
+<%= render 'admin/homes/header', homes: @homes %>
+
 <h3>注文履歴詳細</h3>
-  <%= form_with model: @order, url: admin_order_path(@order.id) , method: :patch do |f| %>
    
    <div>
      <h5>購入者</h5>
-      <%= link_to admin_customer_path(current_customer.id) do%>
-       <%= @order.name %>
-       <% end %>
+      <%= link_to admin_customer_path(current_customer.id) do %>
+      <%= @order.name %>
+      <% end %>
      
      <h5>注文日</h5>
        <%= @order.name %>
@@ -15,11 +16,12 @@
      
      <h5>支払い方法</h5>
        <%= @order.payment_method_i18n %>
-     
+       
+     　<%= form_with model: @order, url: admin_order_path(@order.id) , method: :patch do |f| %>
        <%= f.label :status, "注文ステータス" %>
        <%= f.select :status, Order.statuses_i18n.invert %>
-      
-      <% end %>
+       <%= f.submit '更新' %>
+ 　　　　　 <% end %>
    </div>
    <table>
     <thead>
@@ -30,18 +32,28 @@
      <th>制作ステータス</th>
     </thead>
     <tboby>
-     <%# @order.each do |order|  %>
+     <% @order.order_details.each do |order_detail| %>
        <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= order_detail.item.name %></td>
+        <td><%= order_detail.tax_inclued %></td>
+        <td><%= order_detail.quantity %></td>
+        <td><%= order_detail.subtotal %></td>
+        <td><%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch do |f| %>
+            <%= f.select :production_status, OrderDetail.production_statuses_i18n.invert %>
+            <%= f.submit '更新' %>
+            <% end %>
+        </td>
         </tr>
-     <%# end %>
+     <% end %>
     </tboby>
    </table>
    
-   <h5>
-     
+   <h5>合計金額
+     　<%= @order.order_details.sum(&:subtotal) %>
+   </h5>
+   <h5>送料
+     　<%= @order.shipping_cost %>
+   </h5>
+   <h5>請求金額合計
+     　<%= @order.total_payment %>
    </h5>

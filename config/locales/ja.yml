@@ -11,7 +11,8 @@ ja: # 日本語の設定を行う
         production: "制作中"
         preparing: "発送準備中"
         shipped: "発送済み"
-        
+     
+    order_detail:    
       production_status:
         impossible: "制作不可"
         waiting: "制作待ち"
