@@ -1,6 +1,8 @@
 <%= render 'public/homes/header', header: @header %>
+
+
 <%= form_with model: @cart_item, url: cart_items_path do |f| %>
-  <%= image_tag @item.get_image(100,100) %>
+  <%= image_tag @item.get_image(300,300) %>
   <%= @item.name %>
   <%= @item.introduction %>
   <%= @item.price %>

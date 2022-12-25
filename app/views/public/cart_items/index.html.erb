@@ -3,7 +3,7 @@
 <h3>ショッピングカート</h3>
 <h3><%= link_to "カートを空にする", cart_item_cart_items_destroy_all_path(@cart_items), method: :delete %></h3>
 
-<table>
+<table class="table table-striped" >
   <thead>
    <tr>
     <th>商品名</th>
@@ -33,6 +33,8 @@
    </tboby>
 </table>
 
+<h5>合計金額
 <%= @total_amount %>
+</h5>
 <%= link_to "買い物を続ける", root_path %>
 <%= link_to "情報入力に進む", new_order_path %>

@@ -1,7 +1,10 @@
-  <%= render 'header', homes: @homes %>
+ <%= render 'admin/homes/header', homes: @homes %>
    
-  <h3>注文履歴一覧</h3>
-  <table>
+<h3>注文履歴一覧</h3>
+<div class="container"> 
+ <div class="row">
+  <div class="col-lg-8">
+  <table class="table table-striped">
     <thead>
      <th>購入日時</th>
      <th>購入者</th>
@@ -27,3 +30,6 @@
      <% end %>
     </tboby>
   </table>
+  </div>
+ </div>
+</div>

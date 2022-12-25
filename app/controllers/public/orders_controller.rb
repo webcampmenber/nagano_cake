@@ -2,6 +2,9 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @orders = current_customer.address
+    if current_customer.cart_items.empty?
+      redirect_to cart_items_path
+    end
   end
 
   def confirmation
@@ -49,7 +52,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order = Order.all
+    @order = current_customer.orders
   end
 
   def show

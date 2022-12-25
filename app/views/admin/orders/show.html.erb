@@ -4,15 +4,17 @@
    
    <div>
      <h5>購入者</h5>
-      <%= link_to admin_customer_path(current_customer.id) do %>
+      <%= link_to admin_root_path do %>
       <%= @order.name %>
       <% end %>
      
      <h5>注文日</h5>
-       <%= @order.name %>
+       <%= @order.created_at.strftime("%Y/%m/%d") %>
      
      <h5>配送先</h5>
-       <%= @order.created_at.strftime("%Y/%m/%d") %>
+       〒<%= @order.postal_code %></br>
+       <%= @order.address %></br>
+       <%= @order.name %>
      
      <h5>支払い方法</h5>
        <%= @order.payment_method_i18n %>

@@ -23,6 +23,7 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path
+    flash[:alert] = "退会しました。"
   end
   
   private

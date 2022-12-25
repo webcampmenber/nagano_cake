@@ -8,19 +8,25 @@
    <%= f.submit '新規登録' %>
   <% end %>
 </div>
-<table>
-  <thead>
-   <tr>
-    <th>ジャンル</th>
-    <th></th>
-   </tr>
-  </thead>
-    <tboby>
-      <% @genres.each do |genre| %>
+<div class="container"> 
+  <div class="row">
+   <div class="col-lg-8">
+    <table class="table table-striped">
+      <thead>
        <tr>
-        <td><%= genre.name %></td>
-        <td><%= link_to "編集する", edit_admin_genre_path(genre.id) %></td>
+        <th>ジャンル</th>
+        <th></th>
        </tr>
-      <% end %>
-    </tboby>
-</table>
+      </thead>
+        <tboby>
+          <% @genres.each do |genre| %>
+           <tr>
+            <td><%= genre.name %></td>
+            <td><%= link_to "編集する", edit_admin_genre_path(genre.id) %></td>
+           </tr>
+          <% end %>
+        </tboby>
+    </table>
+   </div>
+  </div>
+</div>

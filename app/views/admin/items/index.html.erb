@@ -1,36 +1,42 @@
  <%= render 'admin/homes/header', homes: @homes %>
  
  <h1>商品一覧</h1>
-  <%= link_to new_admin_item_path  do %>
+ <div class="container"> 
+  <div class="row">
+   <div class="col-lg-8">
+    <%= link_to new_admin_item_path  do %>
      <i class="fas fa-plus" ></i>
      <% end %>
-  <table>
-    <thead>
-     <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-     </tr>
-    </thead>
-    <tboby>
-     <% @items.each do |item| %>
-     <tr>
-      <td><%= item.id %></td>
-      <td><%= link_to item.name, admin_item_path(item.id) %></td>
-      <td><%= item.price %></td>
-      <td><%= item.genre.name %></td>
-      <td>
-       <% if item.is_active %>
-       販売中
-       <% else %>
-       販売停止中
+    <table class="table table-striped" >
+      <thead>
+       <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+       </tr>
+      </thead>
+      <tboby>
+       <% @items.each do |item| %>
+       <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, admin_item_path(item.id) %></td>
+        <td><%= item.price %></td>
+        <td><%= item.genre.name %></td>
+        <td>
+         <% if item.is_active %>
+         販売中
+         <% else %>
+         販売停止中
+         <% end %>
+         </td>
+        </tr>
        <% end %>
-       </td>
-      </tr>
-     <% end %>
-    </tboby>
-  </table>
-  <%= paginate @items %>
-   
+      </tboby>
+    </table>
+   </div>
+  </div>
+</div>
+    <%= paginate @items %>
+     

@@ -1,32 +1,38 @@
 <%= render 'admin/homes/header', homes: @homes %>
-
-<h1>新規登録画面</h1>
- <div>
-  <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
- 
-  <h3>商品画像</h3>
-  <%= f.file_field :image, accept: "image/*" %>
-  
-  <h3>商品名</h3>
-  <%= f.text_field :name %>
-  
-  <h3>商品説明</h3>
-  <%= f.text_area :introduction %>
-  
-  <h3>ジャンル</h3>
-  <%= f.collection_select(:genre_id, @genre, :id, :name) %>
-  
-  <h3>税抜価格</h3>
-  <%= f.text_area :price %>
-  <div class=  "form-group">
-  <h3>販売ステータス</h3>
-  <%= f.radio_button :is_active, "true" %>
-  <%= f.label :is_active, '販売中', value: true %>
-  
-  <%= f.radio_button :is_active, "false"  %>
-  <%= f.label :is_active, '販売停止中', value: false %>
-  
-  <%= f.submit '新規登録' %>
+<div class="container"> 
+ <div class="row">
+  <div class="col-lg-8">
+   
+   <h1>新規登録画面</h1>
+    <div>
+     <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+    
+     <h3>商品画像</h3>
+     <%= f.file_field :image, accept: "image/*" %>
+     
+     <h3>商品名</h3>
+     <%= f.text_field :name %>
+     
+     <h3>商品説明</h3>
+     <%= f.text_area :introduction %>
+     
+     <h3>ジャンル</h3>
+     <%= f.collection_select(:genre_id, @genre, :id, :name) %>
+     
+     <h3>税抜価格</h3>
+     <%= f.text_area :price %>
+     <div class=  "form-group">
+     <h3>販売ステータス</h3>
+     <%= f.radio_button :is_active, "true" %>
+     <%= f.label :is_active, '販売中', value: true %>
+     
+     <%= f.radio_button :is_active, "false"  %>
+     <%= f.label :is_active, '販売停止中', value: false %>
+     
+     <%= f.submit '新規登録' %>
+     </div>
+     <% end %>
+    </div>   
   </div>
-  <% end %>
- </div>   
+ </div>
+</div>

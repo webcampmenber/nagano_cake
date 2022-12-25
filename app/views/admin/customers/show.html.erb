@@ -1,19 +1,44 @@
 <%= render 'admin/homes/header', homes: @homes %>
 
-<h3><%= @customer.last_name %>さんの会員紹介</h3>
-<h4>会員ID<%= @customer.id %></h4>
-<h4>氏名<%= @customer.last_name %> <%= @customer.first_name %></h4>
-<h4>フリガナ<%= @customer.last_name_kana %><%= @customer.first_name_kana %></h4>
-<h4>郵便番号<%= @customer.postal_code %></h4>
-<h4>住所<%= @customer.address %></h4>
-<h4>電話番号<%= @customer.telephone_number %></h4>
-<h4>メールアドレス<%= @customer.email %></h4>
-<h4>会員ステータ
-    <% if @customer.is_deleted %>
-　　有効
-    <% else %>
-    退会
-    <% end %>
-</h4>
-<%= link_to "編集する",edit_admin_customer_path %>
-<%= link_to "注文履歴一覧を見る",admin_root_path %>
+<div class="container">
+ <div class= "row">
+    <h3><%= @customer.last_name %>さんの会員紹介</h3>
+ </div>
+ <div class= "row">
+    <h4>会員ID<%= @customer.id %></h4>
+ </div>
+ <div class= "row">
+    <h4>氏名<%= @customer.last_name %> <%= @customer.first_name %></h4>
+ </div>
+ <div class= "row">
+    <h4>フリガナ<%= @customer.last_name_kana %><%= @customer.first_name_kana %></h4>
+ </div>
+ <div class= "row">
+    <h4>郵便番号 <%= @customer.postal_code %></h4>
+ </div>
+ <div class= "row">
+    <h4>住所 <%= @customer.address %></h4>
+ </div>
+ <div class= "row">
+    <h4>電話番号 <%= @customer.telephone_number %></h4>
+ </div>
+ <div class= "row">
+    <h4>メールアドレス <%= @customer.email %></h4>
+ </div>
+ <div class= "row">
+    <h4>会員ステータ
+        <% if @customer.is_deleted %>
+    　　退会
+        <% else %>
+        有効
+        <% end %>
+    </h4>
+ </div>
+ <div class = "row">
+  <div class ="col-3">
+    <%= link_to "編集する",edit_admin_customer_path %>
+  </div>
+  <div class ="col-3">
+    <%= link_to "注文履歴一覧を見る",admin_root_path %>
+  </div>
+ </div>
